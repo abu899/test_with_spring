@@ -1,3 +1,4 @@
 rootProject.name = 'spring_with_test'
 include 'sample'
+include 'toy-project'
 
