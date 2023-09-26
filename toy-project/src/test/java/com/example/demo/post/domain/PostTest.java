@@ -1,13 +1,11 @@
 package com.example.demo.post.domain;
 
+import com.example.demo.mock.TestClockHolder;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PostTest {
 
@@ -28,7 +26,7 @@ class PostTest {
                 .build();
 
         //when
-        Post post = Post.from(postCreate, user);
+        Post post = Post.from(postCreate, user, new TestClockHolder(100L));
 
         //then
         assertThat(post.getContent()).isEqualTo("helloworld");
