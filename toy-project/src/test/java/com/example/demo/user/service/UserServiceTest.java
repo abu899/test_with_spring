@@ -10,31 +10,21 @@ import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserCreate;
 import com.example.demo.user.domain.UserStatus;
 import com.example.demo.user.domain.UserUpdate;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlGroup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.any;
 
 class UserServiceTest {
 
-    UserService userService;
+    UserServiceImpl userService;
 
     @BeforeEach
     void init() {
         FakeMailSender fakeMailSender = new FakeMailSender();
         FakeUserRepository fakeUserRepository = new FakeUserRepository();
-        userService = UserService.builder()
+        userService = UserServiceImpl.builder()
                 .userRepository(fakeUserRepository)
                 .clockHolder(new TestClockHolder(100L))
                 .uuidHolder(new TestUuidHolder("aaaaaaaa-aaa-aaaaaa-aaaaaaaa"))

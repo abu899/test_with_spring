@@ -2,11 +2,11 @@ package com.example.demo.medium;
 
 import com.example.demo.common.domain.exception.CertificationCodeNotMatchedException;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
-import com.example.demo.user.domain.UserStatus;
-import com.example.demo.user.domain.UserCreate;
-import com.example.demo.user.domain.UserUpdate;
 import com.example.demo.user.domain.User;
-import com.example.demo.user.service.UserService;
+import com.example.demo.user.domain.UserCreate;
+import com.example.demo.user.domain.UserStatus;
+import com.example.demo.user.domain.UserUpdate;
+import com.example.demo.user.service.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ import static org.mockito.ArgumentMatchers.any;
 class UserServiceTest {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
     @MockBean
     JavaMailSender javaMailSender;
 

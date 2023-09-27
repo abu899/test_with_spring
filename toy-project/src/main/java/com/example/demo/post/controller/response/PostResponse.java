@@ -5,8 +5,6 @@ import com.example.demo.user.controller.response.UserResponse;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.Clock;
-
 @Getter
 @Builder
 public class PostResponse {
@@ -21,7 +19,7 @@ public class PostResponse {
         return PostResponse.builder()
                 .id(post.getId())
                 .content(post.getContent())
-                .createdAt(Clock.systemUTC().millis())
+                .createdAt(post.getCreatedAt())
                 .writer(UserResponse.from(post.getWriter()))
                 .build();
     }

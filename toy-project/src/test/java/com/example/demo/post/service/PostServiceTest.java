@@ -1,6 +1,8 @@
 package com.example.demo.post.service;
 
-import com.example.demo.mock.*;
+import com.example.demo.mock.FakePostRepository;
+import com.example.demo.mock.FakeUserRepository;
+import com.example.demo.mock.TestClockHolder;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
@@ -13,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PostServiceTest {
 
-    private PostService postService;
+    private PostServiceImpl postService;
 
     @BeforeEach
     void init() {
@@ -39,7 +41,7 @@ class PostServiceTest {
                 .build());
 
         FakePostRepository fakePostRepository = new FakePostRepository();
-        postService = PostService.builder()
+        postService = PostServiceImpl.builder()
                 .userRepository(fakeUserRepository)
                 .postRepository(fakePostRepository)
                 .clockHolder(new TestClockHolder(100L))
